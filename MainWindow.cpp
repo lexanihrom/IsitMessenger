@@ -10,8 +10,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     connect(ui->createServer, SIGNAL(clicked(bool)),
             this, SLOT(createServer()));
-    m_serverDiscovery = new ServerDiscovery();
-    m_server = new Server();
+
+    m_serverDiscovery = new ServerDiscovery(this);
+    m_server = new Server(this);
+
+    connect(m_server, SIGNAL(messageReceived(QString,QString)),
+            this, SLOT(addMessage(QString,QString)));
+    connect(m_serverDiscovery,SIGNAL(serverFound(QString,quint16)),
+            this, SLOT(addServer(QString,quint16)));
 }
 
 MainWindow::~MainWindow()
@@ -34,7 +40,17 @@ void MainWindow::addMessage(QString name, QString text)
 {
     ui->messages->append(name+":"+text+"\n");
 }
-
+void MainWindow::addServer(QString address, quint16 port)
+{
+    QString text = address+":"+QString::number(port);
+    for(int i=0;i<ui->serverListList->count();i++){
+        QListWidgetItem *item = ui->serverListList->item(i);
+        if(item->text() == text){
+            return;
+        }
+    }
+    ui->serverListList->addItem(text);
+}
 void MainWindow::createServer()
 {
 
