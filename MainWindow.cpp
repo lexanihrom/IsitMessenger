@@ -12,3 +12,13 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::addContact(QString name)
+{
+
+}
+
+void MainWindow::addMessage(QString name, QString text)
+{
+
+}

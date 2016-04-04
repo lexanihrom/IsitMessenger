@@ -15,6 +15,10 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+    void addContact(QString name);
+    void addMessage(QString name, QString text);
+
 private:
     Ui::MainWindow *ui;
 };
