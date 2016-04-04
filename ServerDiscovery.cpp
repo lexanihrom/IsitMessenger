@@ -44,5 +44,10 @@ void ServerDiscovery::announceServer()
 
 void ServerDiscovery::discoveryServer()
 {
-
+    for (QNetworkInterface iface : QNetworkInterface::allInterfaces()){
+        for (QNetworkAddressEntry entry : iface.addressEntries()) {
+            QString datagram = s_header + ":?";
+            m_udpSocket->writeDatagram(datagram.toLatin1(), entry.broadcast(), s_udpPort);
+        }
+    }
 }
