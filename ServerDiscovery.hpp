@@ -14,10 +14,11 @@ public:
 signals:
 
 public slots:
-    void addServer(quint port);
+    void addServer(quint16 port);
 
 private:
     QUdpSocket *m_udpSocket;
+
 };
 
 #endif // SERVERDISCOVERY_HPP
