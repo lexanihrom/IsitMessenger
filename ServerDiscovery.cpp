@@ -1,7 +1,11 @@
 #include "Serverdiscovery.hpp"
 
-Serverdiscovery::Serverdiscovery(QObject *parent) : QObject(parent)
+ServerDiscovery::ServerDiscovery(QObject *parent) : QObject(parent)
 {
 
 }
 
+ServerDiscovery::addServer(quint16 port)
+{
+
+}

@@ -10,9 +10,11 @@ public:
     explicit ServerDiscovery(QObject *parent = 0);
 
 signals:
+    
 
 public slots:
-    void addServer(quint port);
+    void addServer(quint16 port);
+    
 };
 
 #endif // SERVERDISCOVERY_HPP
