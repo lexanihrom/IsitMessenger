@@ -26,9 +26,15 @@ void ServerDiscovery::onUdpMessageReceived()
     while (m_udpSocket->hasPendingDatagrams()) {
         QByteArray buffer;
         buffer.resize(m_udpSocket->pendingDatagramSize());
-
         QHostAddress address;
         m_udpSocket->readDatagram(buffer.data(), buffer.size(), &address);
+        if(buffer == s_header+":?"){
+            announceServer();
+        }else{
+            QList<QByteArray> lBuff = buffer.split(":");
+            quint16 port = lBuff[1].toUInt();
+            emit serverFound(address,port);
+        }
     }
 }
 
