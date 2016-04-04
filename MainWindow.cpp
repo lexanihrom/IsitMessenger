@@ -15,10 +15,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::addContact(QString name)
 {
-
+    ui->contacts->addItem(name);
 }
 
 void MainWindow::addMessage(QString name, QString text)
 {
-
+    ui->messages->append(name+":"+text+"\n");
 }
