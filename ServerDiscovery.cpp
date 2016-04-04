@@ -5,7 +5,7 @@ ServerDiscovery::ServerDiscovery(QObject *parent) : QObject(parent)
 
 }
 
-ServerDiscovery::addServer(quint16 port)
+void ServerDiscovery::addServer(quint16 port)
 {
 
 }

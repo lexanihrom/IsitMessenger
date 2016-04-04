@@ -4,4 +4,3 @@ Server::Server(QObject *parent) : QObject(parent)
 {
 
 }
-
