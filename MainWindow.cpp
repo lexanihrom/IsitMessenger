@@ -1,5 +1,7 @@
 #include "MainWindow.hpp"
 #include "ui_MainWindow.h"
+#include "Server.hpp"
+#include "ServerDiscovery.hpp"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -37,3 +39,4 @@ void MainWindow::createServer()
 {
 
 }
+
