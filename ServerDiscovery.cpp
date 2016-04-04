@@ -1,4 +1,4 @@
-#include "Serverdiscovery.hpp"
+#include "ServerDiscovery.hpp"
 
 ServerDiscovery::ServerDiscovery(QObject *parent) : QObject(parent)
 {

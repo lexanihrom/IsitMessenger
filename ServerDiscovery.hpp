@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+class QUdpSocket;
+
 class ServerDiscovery : public QObject
 {
     Q_OBJECT
@@ -13,6 +15,9 @@ signals:
 
 public slots:
     void addServer(quint port);
+
+private:
+    QUdpSocket *m_udpSocket;
 };
 
 #endif // SERVERDISCOVERY_HPP
