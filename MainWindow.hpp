@@ -19,6 +19,9 @@ public slots:
     void addContact(QString name);
     void addMessage(QString name, QString text);
 
+private slots:
+    void createServer();
+
 private:
     Ui::MainWindow *ui;
 };

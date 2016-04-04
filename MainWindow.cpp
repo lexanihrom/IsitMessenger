@@ -22,3 +22,8 @@ void MainWindow::addMessage(QString name, QString text)
 {
     ui->messages->append(name+":"+text+"\n");
 }
+
+void MainWindow::createServer()
+{
+
+}

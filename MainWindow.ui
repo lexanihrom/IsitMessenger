@@ -11,14 +11,17 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>ISIT Messenger</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
@@ -28,9 +31,6 @@
         <item row="1" column="1">
          <widget class="QLineEdit" name="serverListAddress"/>
         </item>
-        <item row="0" column="0" colspan="5">
-         <widget class="QListWidget" name="serverListList"/>
-        </item>
         <item row="1" column="4">
          <widget class="QPushButton" name="serverListConnectButton">
           <property name="text">
@@ -38,12 +38,8 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="2">
-         <widget class="QLabel" name="label_3">
-          <property name="text">
-           <string>Port:</string>
-          </property>
-         </widget>
+        <item row="0" column="0" colspan="5">
+         <widget class="QListWidget" name="serverListList"/>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="label_2">
@@ -56,6 +52,13 @@
          <widget class="QSpinBox" name="serverListPort">
           <property name="maximum">
            <number>65535</number>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>Port:</string>
           </property>
          </widget>
         </item>
@@ -110,6 +113,55 @@
        <attribute name="title">
         <string>Server</string>
        </attribute>
+       <widget class="QTextEdit" name="textEdit">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>40</y>
+          <width>431</width>
+          <height>211</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>10</y>
+          <width>81</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Start Server</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>10</y>
+          <width>24</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Port:</string>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="serverListPort_2">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>10</y>
+          <width>55</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="maximum">
+         <number>65535</number>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
