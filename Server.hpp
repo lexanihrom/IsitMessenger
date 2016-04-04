@@ -2,6 +2,10 @@
 #define SERVER_HPP
 
 #include <QObject>
+#include <QVector>
+
+class QTcpServer;
+class QTcpSocket;
 
 class Server : public QObject
 {
@@ -10,8 +14,23 @@ public:
     explicit Server(QObject *parent = 0);
 
 signals:
+    void serverStarted(quint16 port);
+
+    void messageReceived(QString client, QString message);
 
 public slots:
+    void startServer(quint16 port);
+
+    void sendMessage(QString message);
+
+protected slots:
+    void onClientConnected();
+    void onReadyRead();
+
+private:
+    QTcpServer *m_server;
+
+    QVector<QTcpSocket*> m_clients;
 };
 
 #endif // SERVER_HPP
