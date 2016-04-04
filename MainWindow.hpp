@@ -2,6 +2,8 @@
 #define MAINWINDOW_HPP
 
 #include <QMainWindow>
+class ServerDiscovery;
+class Server;
 
 namespace Ui {
 class MainWindow;
@@ -24,6 +26,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    ServerDiscovery *m_serverDiscovery;
+    Server *m_server;
 };
 
 #endif // MAINWINDOW_HPP

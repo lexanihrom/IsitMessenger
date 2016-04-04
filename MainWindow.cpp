@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     connect(ui->createServer, SIGNAL(clicked(bool)),
             this, SLOT(createServer()));
+    m_serverDiscovery = new ServerDiscovery();
+    m_server = new Server();
 }
 
 MainWindow::~MainWindow()
@@ -17,6 +19,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::addContact(QString name)
 {
+    for(int i=0;i<ui->contacts->count();i++){
+        QListWidgetItem *item = ui->contacts->item(i);
+        if(item->text() == name){
+            return;
+        }
+    }
     ui->contacts->addItem(name);
 }
 
