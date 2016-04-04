@@ -123,7 +123,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="createServer">
         <property name="geometry">
          <rect>
           <x>230</x>

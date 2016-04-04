@@ -6,6 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connect(ui->createServer, SIGNAL(clicked(bool)),
+            this, SLOT(createServer()));
 }
 
 MainWindow::~MainWindow()
