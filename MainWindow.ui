@@ -149,7 +149,7 @@
          <string>Port:</string>
         </property>
        </widget>
-       <widget class="QSpinBox" name="serverListPort_2">
+       <widget class="QSpinBox" name="serverPort">
         <property name="geometry">
          <rect>
           <x>160</x>
