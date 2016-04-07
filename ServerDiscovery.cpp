@@ -10,7 +10,7 @@ ServerDiscovery::ServerDiscovery(QObject *parent) :
     QObject(parent)
 {
     m_udpSocket = new QUdpSocket(this);
-    m_udpSocket->bind(QHostAddress::Any, s_udpPort);
+    m_udpSocket->bind(QHostAddress::Any, s_udpPort, QAbstractSocket::ShareAddress|QAbstractSocket::ReuseAddressHint);
     connect(m_udpSocket, SIGNAL(readyRead()),
             this, SLOT(onUdpMessageReceived()));
 
