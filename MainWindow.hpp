@@ -17,6 +17,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+     void connectToServer();
+
 public slots:
     void addContact(QString name);
     void addMessage(QString name, QString text);
@@ -24,6 +26,8 @@ public slots:
 
 private slots:
     void createServer();
+
+    void on_serverListConnectButton_clicked();
 
 private:
     Ui::MainWindow *ui;
