@@ -15,8 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     m_serverDiscovery = new ServerDiscovery(this);
     m_server = new Server(this);
 
-    connect(m_server,SIGNAL(serverStarted(quint16)),
-            this,SLOT(addServerToDiscovery(quint16)));
+    connect(m_server, SIGNAL(serverStarted(quint16)),
+            this, SLOT(addServerToDiscovery(quint16)));
 
 
     connect(m_server, SIGNAL(messageReceived(QString,QString)),
