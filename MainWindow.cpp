@@ -25,6 +25,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::connectToServer()
+{
+
+}
+
 void MainWindow::addContact(QString name)
 {
     for(int i=0;i<ui->contacts->count();i++){
@@ -56,3 +61,8 @@ void MainWindow::createServer()
 
 }
 
+
+void MainWindow::on_serverListConnectButton_clicked()
+{
+    connectToServer();
+}
