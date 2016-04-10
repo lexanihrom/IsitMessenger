@@ -79,3 +79,8 @@ void MainWindow::on_serverListConnectButton_clicked()
 {
     connectToServer();
 }
+
+void MainWindow::on_serverListList_itemDoubleClicked(QListWidgetItem *item)
+{
+    connectToServer();
+}
