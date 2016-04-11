@@ -10,6 +10,7 @@ class ServerDiscovery : public QObject
     Q_OBJECT
 public:
     explicit ServerDiscovery(QObject *parent = 0);
+    void discoveryServer();
 
 signals:
     void serverFound(QString ip, quint16 port);
@@ -21,7 +22,6 @@ private slots:
     void onUdpMessageReceived();
 
     void announceServer();
-    void discoveryServer();
 
 private:
     QUdpSocket *m_udpSocket;

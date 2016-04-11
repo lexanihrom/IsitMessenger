@@ -15,7 +15,6 @@ ServerDiscovery::ServerDiscovery(QObject *parent) :
 
     connect(m_udpSocket, SIGNAL(readyRead()),
             this, SLOT(onUdpMessageReceived()));
-
 }
 
 void ServerDiscovery::addServer(quint16 port)

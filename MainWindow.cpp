@@ -24,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(m_serverDiscovery,SIGNAL(serverFound(QString,quint16)),
             this, SLOT(addServer(QString,quint16)));
+
+    m_serverDiscovery->discoveryServer();
 }
 
 MainWindow::~MainWindow()
