@@ -2,9 +2,10 @@
 #define MAINWINDOW_HPP
 
 #include <QMainWindow>
-#include <QListWidgetItem>
+
 class ServerDiscovery;
 class Server;
+class QListWidgetItem;
 
 namespace Ui {
 class MainWindow;
