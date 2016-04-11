@@ -17,10 +17,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         MainWindow.cpp \
     ServerDiscovery.cpp \
-    Server.cpp
+    Server.cpp \
+    LocalClient.cpp
 
 HEADERS  += MainWindow.hpp \
     ServerDiscovery.hpp \
-    Server.hpp
+    Server.hpp \
+    LocalClient.hpp
 
 FORMS    += MainWindow.ui
