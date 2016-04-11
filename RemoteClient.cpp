@@ -19,6 +19,7 @@ void RemoteClient::onReadyRead()
 {
     emit messageReceived(m_socket->readAll());
 }
+
 QString RemoteClient::nickName()
 {
     return "12345";

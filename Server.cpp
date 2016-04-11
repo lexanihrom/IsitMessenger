@@ -30,6 +30,15 @@ void Server::sendMessage(QString message)
     }
 }
 
+void Server::onClientMessageReceived(QString message)
+{
+    RemoteClient *client = qobject_cast<RemoteClient*>(sender());
+
+    sendMessage(message);
+
+    emit messageReceived(client->nickName(), message);
+}
+
 void Server::onClientConnected()
 {
     QTcpSocket *clientSocket = m_server->nextPendingConnection();
@@ -38,8 +47,10 @@ void Server::onClientConnected()
 
     m_clients << client;
 
-    connect(client, SIGNAL(messageReceived(QString,QString)),
-            this, SIGNAL(messageReceived(QString,QString)));
+    /*connect(client, SIGNAL(messageReceived(QString,QString)),
+            this, SIGNAL(messageReceived(QString,QString)));*/
+    connect(client,SIGNAL(messageReceived(QString)),
+            this,SLOT(onClientMessageReceived(QString)));
 }
 
 void Server::onReadyRead()
