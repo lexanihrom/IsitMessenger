@@ -18,11 +18,13 @@ SOURCES += main.cpp\
         MainWindow.cpp \
     ServerDiscovery.cpp \
     Server.cpp \
-    LocalClient.cpp
+    LocalClient.cpp \
+    RemoteClient.cpp
 
 HEADERS  += MainWindow.hpp \
     ServerDiscovery.hpp \
     Server.hpp \
-    LocalClient.hpp
+    LocalClient.hpp \
+    RemoteClient.hpp
 
 FORMS    += MainWindow.ui
