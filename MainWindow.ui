@@ -120,7 +120,7 @@
        <attribute name="title">
         <string>Server</string>
        </attribute>
-       <widget class="QTextEdit" name="textEdit">
+       <widget class="QTextEdit" name="serverLog">
         <property name="geometry">
          <rect>
           <x>10</x>
