@@ -30,6 +30,8 @@ public slots:
 private slots:
     void createServer();
 
+    void onServerMessageReceived(QString from, QString message);
+
     void on_serverListConnectButton_clicked();
 
     void on_serverListList_itemDoubleClicked(QListWidgetItem *item);

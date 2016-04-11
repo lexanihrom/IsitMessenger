@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     connect(m_server, SIGNAL(messageReceived(QString,QString)),
-            this, SLOT(addMessage(QString,QString)));
+            this, SLOT(onServerMessageReceived(QString,QString)));
 
     connect(m_serverDiscovery,SIGNAL(serverFound(QString,quint16)),
             this, SLOT(addServer(QString,quint16)));
@@ -76,6 +76,10 @@ void MainWindow::createServer()
     m_server->startServer(ui->serverPort->value());
 }
 
+void MainWindow::onServerMessageReceived(QString from, QString message)
+{
+    ui->serverLog->insertPlainText(from + ":" + message + "\n");
+}
 
 void MainWindow::on_serverListConnectButton_clicked()
 {
