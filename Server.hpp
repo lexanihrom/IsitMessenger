@@ -5,7 +5,7 @@
 #include <QVector>
 
 class QTcpServer;
-class QTcpSocket;
+class RemoteClient;
 
 class Server : public QObject
 {
@@ -29,7 +29,7 @@ protected slots:
 private:
     QTcpServer *m_server;
 
-    QVector<QTcpSocket*> m_clients;
+    QVector<RemoteClient*> m_clients;
 };
 
 #endif // SERVER_HPP

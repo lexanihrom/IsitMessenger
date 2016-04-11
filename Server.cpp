@@ -3,6 +3,8 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 
+#include "RemoteClient.hpp"
+
 Server::Server(QObject *parent) :
     QObject(parent),
     m_server(new QTcpServer(this))
@@ -23,18 +25,21 @@ void Server::startServer(quint16 port)
 
 void Server::sendMessage(QString message)
 {
-    for (QTcpSocket *client : m_clients) {
-        client->write(message.toUtf8());
+    for (RemoteClient *client : m_clients) {
+        client->sendMessage(message);
     }
 }
 
 void Server::onClientConnected()
 {
-    QTcpSocket *client = m_server->nextPendingConnection();
+    QTcpSocket *clientSocket = m_server->nextPendingConnection();
+
+    RemoteClient *client = new RemoteClient(clientSocket, this);
 
     m_clients << client;
 
-    connect(client, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
+    connect(client, SIGNAL(messageReceived(QString,QString)),
+            this, SIGNAL(messageReceived(QString,QString)));
 }
 
 void Server::onReadyRead()
