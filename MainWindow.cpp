@@ -107,3 +107,9 @@ void MainWindow::on_serverListRefreshButton_clicked()
     ui->serverListList->clear();
     m_serverDiscovery->discoveryServer();
 }
+
+void MainWindow::on_sendButton_clicked()
+{
+    m_client->sendMessage(ui->message->text());
+    ui->message->clear();
+}
