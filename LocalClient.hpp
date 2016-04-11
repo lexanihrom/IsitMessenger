@@ -3,7 +3,6 @@
 
 #include <QObject>
 
-class QTcpServer;
 class QTcpSocket;
 
 class LocalClient : public QObject
@@ -19,6 +18,13 @@ signals:
 public slots:
     void connectToServer(QString address, quint16 port);
     void sendMessage(QString message);
+
+protected slots:
+    void onReadyRead();
+
+protected:
+    QTcpSocket *m_socket;
+
 };
 
 #endif // LOCALCLIENT_HPP
