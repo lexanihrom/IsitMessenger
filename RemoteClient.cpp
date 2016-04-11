@@ -17,5 +17,5 @@ void RemoteClient::sendMessage(QString message)
 
 void RemoteClient::onReadyRead()
 {
-    emit messageReceived("123", m_socket->readAll());
+    emit messageReceived(m_socket->readAll());
 }

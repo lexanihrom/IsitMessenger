@@ -12,7 +12,7 @@ public:
     explicit RemoteClient(QTcpSocket *socket, QObject *parent = 0);
 
 signals:
-    void messageReceived(QString client, QString message);
+    void messageReceived(QString message);
 
 public slots:
     void sendMessage(QString message);
