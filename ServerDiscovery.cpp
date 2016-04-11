@@ -62,7 +62,7 @@ void ServerDiscovery::announceServer()
 
 void ServerDiscovery::discoveryServer()
 {
-    qDebug() << Q_FUNC_INFO << "Searching for servers";
+    qDebug() << Q_FUNC_INFO << "Searching for servers lala ";
     for (QNetworkInterface iface : QNetworkInterface::allInterfaces()){
         for (QNetworkAddressEntry entry : iface.addressEntries()) {
             QString datagram = s_header + ":?";
