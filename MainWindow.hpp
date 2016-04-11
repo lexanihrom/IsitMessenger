@@ -5,6 +5,8 @@
 
 class ServerDiscovery;
 class Server;
+class LocalClient;
+
 class QListWidgetItem;
 
 namespace Ui {
@@ -44,6 +46,7 @@ private:
     Ui::MainWindow *ui;
     ServerDiscovery *m_serverDiscovery;
     Server *m_server;
+    LocalClient *m_client;
 };
 
 #endif // MAINWINDOW_HPP

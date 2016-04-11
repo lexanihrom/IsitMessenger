@@ -2,10 +2,12 @@
 #include "ui_MainWindow.h"
 #include "Server.hpp"
 #include "ServerDiscovery.hpp"
+#include "LocalClient.hpp"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    m_client(new LocalClient(this))
 {
     ui->setupUi(this);
 
@@ -18,12 +20,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(m_server, SIGNAL(serverStarted(quint16)),
             this, SLOT(addServerToDiscovery(quint16)));
 
-
     connect(m_server, SIGNAL(messageReceived(QString,QString)),
             this, SLOT(onServerMessageReceived(QString,QString)));
 
     connect(m_serverDiscovery,SIGNAL(serverFound(QString,quint16)),
             this, SLOT(addServer(QString,quint16)));
+
+    connect(m_client, SIGNAL(messageReceived(QString,QString)),
+            this, SLOT(addMessage(QString,QString)));
 
     m_serverDiscovery->discoveryServer();
 }
@@ -35,7 +39,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::connectToServer()
 {
-
+    m_client->connectToServer(ui->serverListAddress->text(),
+                              ui->serverListPort->value());
 }
 
 void MainWindow::addContact(QString name)
