@@ -15,7 +15,6 @@ public:
 
 signals:
     void serverStarted(quint16 port);
-
     void messageReceived(QString client, QString message);
 
 public slots:

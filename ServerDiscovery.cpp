@@ -10,6 +10,7 @@ static const QByteArray s_header = "IsitMessenger";
 ServerDiscovery::ServerDiscovery(QObject *parent) :
     QObject(parent)
 {
+    m_haveServer = false;
     m_udpSocket = new QUdpSocket(this);
     m_udpSocket->bind(QHostAddress::Any, s_udpPort, QAbstractSocket::ShareAddress|QAbstractSocket::ReuseAddressHint);
 
@@ -19,8 +20,9 @@ ServerDiscovery::ServerDiscovery(QObject *parent) :
 
 void ServerDiscovery::addServer(quint16 port)
 {
-     m_port = port;
-     announceServer();
+    m_haveServer = true;
+    m_port = port;
+    announceServer();
 }
 
 void ServerDiscovery::onUdpMessageReceived()
@@ -45,10 +47,12 @@ void ServerDiscovery::onUdpMessageReceived()
 
 void ServerDiscovery::announceServer()
 {
-    for (QNetworkInterface iface : QNetworkInterface::allInterfaces()){
-        for (QNetworkAddressEntry entry : iface.addressEntries()) {
-            QString datagram = s_header + ":" + QString::number(m_port);
-            m_udpSocket->writeDatagram(datagram.toLatin1(), entry.broadcast(), s_udpPort);
+    if (m_haveServer){
+        for (QNetworkInterface iface : QNetworkInterface::allInterfaces()){
+            for (QNetworkAddressEntry entry : iface.addressEntries()) {
+                QString datagram = s_header + ":" + QString::number(m_port);
+                m_udpSocket->writeDatagram(datagram.toLatin1(), entry.broadcast(), s_udpPort);
+            }
         }
     }
 }

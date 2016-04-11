@@ -26,6 +26,7 @@ private slots:
 private:
     QUdpSocket *m_udpSocket;
     quint16 m_port;
+    bool m_haveServer;
 
 };
 
