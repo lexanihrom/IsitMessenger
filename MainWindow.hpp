@@ -36,6 +36,8 @@ private slots:
 
     void on_serverListList_itemClicked(QListWidgetItem *item);
 
+    void on_serverListRefreshButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     ServerDiscovery *m_serverDiscovery;

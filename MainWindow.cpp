@@ -92,3 +92,9 @@ void MainWindow::on_serverListList_itemClicked(QListWidgetItem *item)
     ui->serverListAddress->setText(item->text().section(':',0,3));
     ui->serverListPort->setValue(item->text().section(':',-1).toInt());
 }
+
+void MainWindow::on_serverListRefreshButton_clicked()
+{
+    ui->serverListList->clear();
+    m_serverDiscovery->discoveryServer();
+}
