@@ -10,6 +10,7 @@ class RemoteClient : public QObject
     Q_OBJECT
 public:
     explicit RemoteClient(QTcpSocket *socket, QObject *parent = 0);
+    QString nickName();
 
 signals:
     void messageReceived(QString message);
