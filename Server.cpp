@@ -1,5 +1,5 @@
 #include "Server.hpp"
-
+#include <QDebug>
 #include <QTcpServer>
 #include <QTcpSocket>
 
@@ -17,6 +17,7 @@ void Server::startServer(quint16 port)
 
     if (started) {
         emit serverStarted(m_server->serverPort());
+        qDebug() << Q_FUNC_INFO << "Server started on port :" << m_server->serverPort();
     }
 }
 

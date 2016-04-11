@@ -47,18 +47,22 @@ void ServerDiscovery::onUdpMessageReceived()
 
 void ServerDiscovery::announceServer()
 {
+
     if (m_haveServer){
         for (QNetworkInterface iface : QNetworkInterface::allInterfaces()){
             for (QNetworkAddressEntry entry : iface.addressEntries()) {
                 QString datagram = s_header + ":" + QString::number(m_port);
                 m_udpSocket->writeDatagram(datagram.toLatin1(), entry.broadcast(), s_udpPort);
+
             }
         }
+        qDebug() << Q_FUNC_INFO << "Announcing server";
     }
 }
 
 void ServerDiscovery::discoveryServer()
 {
+    qDebug() << Q_FUNC_INFO << "Searching for servers";
     for (QNetworkInterface iface : QNetworkInterface::allInterfaces()){
         for (QNetworkAddressEntry entry : iface.addressEntries()) {
             QString datagram = s_header + ":?";
