@@ -33,6 +33,8 @@ private slots:
 
     void on_serverListList_itemDoubleClicked(QListWidgetItem *item);
 
+    void on_serverListList_itemClicked(QListWidgetItem *item);
+
 private:
     Ui::MainWindow *ui;
     ServerDiscovery *m_serverDiscovery;
