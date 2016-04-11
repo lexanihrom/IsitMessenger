@@ -2,8 +2,10 @@
 #define MAINWINDOW_HPP
 
 #include <QMainWindow>
+
 class ServerDiscovery;
 class Server;
+class QListWidgetItem;
 
 namespace Ui {
 class MainWindow;
@@ -29,6 +31,10 @@ private slots:
     void createServer();
 
     void on_serverListConnectButton_clicked();
+
+    void on_serverListList_itemDoubleClicked(QListWidgetItem *item);
+
+    void on_serverListList_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::MainWindow *ui;

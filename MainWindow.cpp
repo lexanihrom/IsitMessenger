@@ -79,3 +79,14 @@ void MainWindow::on_serverListConnectButton_clicked()
 {
     connectToServer();
 }
+
+void MainWindow::on_serverListList_itemDoubleClicked(QListWidgetItem *item)
+{
+    connectToServer();
+}
+
+void MainWindow::on_serverListList_itemClicked(QListWidgetItem *item)
+{
+    ui->serverListAddress->setText(item->text().section(':',0,3));
+    ui->serverListPort->setValue(item->text().section(':',-1).toInt());
+}

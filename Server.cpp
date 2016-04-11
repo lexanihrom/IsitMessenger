@@ -16,7 +16,7 @@ void Server::startServer(quint16 port)
     connect(m_server, SIGNAL(newConnection()), this, SLOT(onClientConnected()));
 
     if (started) {
-        emit serverStarted(port);
+        emit serverStarted(m_server->serverPort());
     }
 }
 
