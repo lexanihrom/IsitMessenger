@@ -17,7 +17,7 @@ signals:
     void messageReceived(QString client, QString message);
 
 public slots:
-    void connectToServer();
+    void connectToServer(QString address, quint16 port);
     void sendMessage(QString message);
 };
 

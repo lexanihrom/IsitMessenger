@@ -8,7 +8,7 @@ LocalClient::LocalClient(QObject *parent) : QObject(parent)
 
 }
 
-void LocalClient::connectToServer()
+void LocalClient::connectToServer(QString address, quint16 port)
 {
 
 }
