@@ -26,7 +26,7 @@ void LocalClient::sendMessage(QString message)
 
 void LocalClient::setNickname(QString nickname)
 {
-    m_socket->write("setNickname:" + m_nickname);
+    m_socket->write("setNickname:" + nickname.toUtf8());
     m_pendingNickname = nickname;
 }
 
