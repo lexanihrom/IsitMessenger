@@ -57,9 +57,3 @@ void Server::onClientConnected()
             this,SLOT(onClientMessageReceived(QString)));
 }
 
-void Server::onReadyRead()
-{
-    QTcpSocket *client = qobject_cast<QTcpSocket*>(sender());
-
-    emit messageReceived(client->peerAddress().toString(), client->readAll());
-}

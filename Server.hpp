@@ -24,8 +24,6 @@ public slots:
 protected slots:
     void onClientMessageReceived(QString message);
     void onClientConnected();
-    void onReadyRead();
-
 private:
     QTcpServer *m_server;
 
