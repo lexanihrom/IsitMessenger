@@ -15,6 +15,11 @@ void RemoteClient::sendMessage(QString message)
     m_socket->write(message.toUtf8());
 }
 
+void RemoteClient::setNickname(QString nickname)
+{
+    m_pendingNickname = nickname;
+}
+
 void RemoteClient::onReadyRead()
 {
     emit messageReceived(m_socket->readAll());
@@ -22,5 +27,5 @@ void RemoteClient::onReadyRead()
 
 QString RemoteClient::nickName()
 {
-    return "12345";
+    return m_pendingNickname;
 }

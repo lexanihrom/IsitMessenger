@@ -17,12 +17,14 @@ signals:
 
 public slots:
     void sendMessage(QString message);
+    void setNickname(QString nickname);
 
 protected slots:
     void onReadyRead();
 
 protected:
     QTcpSocket *m_socket;
+    QString m_pendingNickname;
 };
 
 #endif // REMOTECLIENT_HPP
