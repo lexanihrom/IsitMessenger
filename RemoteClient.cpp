@@ -12,6 +12,7 @@ RemoteClient::RemoteClient(QTcpSocket *socket, QObject *parent) :
 
 void RemoteClient::sendMessage(QString message)
 {
+    m_socket->write("m:");
     m_socket->write(message.toUtf8());
 }
 
