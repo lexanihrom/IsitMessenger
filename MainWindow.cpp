@@ -113,8 +113,14 @@ void MainWindow::on_serverListRefreshButton_clicked()
 
 void MainWindow::on_sendButton_clicked()
 {
-    m_client->sendMessage(ui->message->text());
+    QString text = ui->message->text();
     ui->message->clear();
+    if(text.startsWith("/nick ")){
+        m_client->setNickname(text.mid(7, -1));
+    }
+    else {
+         m_client->sendMessage(ui->message->text());
+    }
 }
 
 void MainWindow::onClientConnected()
