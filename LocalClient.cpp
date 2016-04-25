@@ -32,5 +32,14 @@ void LocalClient::setNickname(QString nickname)
 
 void LocalClient::onReadyRead()
 {
-    emit messageReceived("123", m_socket->readAll());
+    QByteArray data = m_socket->readAll();
+    if (data.startsWith("m:")){
+        emit messageReceived("123", data.mid(2, -1));
+    }
+    if(data.startsWith("NicknameStatus:0")){
+
+    }
+    if(data.startsWith("NicknameStatus:1")){
+        m_nickname = m_pendingNickname;
+    }
 }

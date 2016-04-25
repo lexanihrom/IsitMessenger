@@ -26,7 +26,7 @@ protected slots:
 protected:
     QTcpSocket *m_socket;
     QString m_pendingNickname;
-
+    QString m_nickname;
 };
 
 #endif // LOCALCLIENT_HPP
