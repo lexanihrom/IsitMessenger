@@ -44,6 +44,8 @@ private slots:
 
     void on_sendButton_clicked();
 
+    void onClientConnected();
+
 private:
     Ui::MainWindow *ui;
     ServerDiscovery *m_serverDiscovery;

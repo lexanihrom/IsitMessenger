@@ -29,6 +29,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(m_client, SIGNAL(messageReceived(QString,QString)),
             this, SLOT(addMessage(QString,QString)));
 
+    connect(m_client, SIGNAL(connected()),
+            this, SLOT(onClientConnected()));
+
     m_serverDiscovery->discoveryServer();
 }
 
@@ -112,4 +115,10 @@ void MainWindow::on_sendButton_clicked()
 {
     m_client->sendMessage(ui->message->text());
     ui->message->clear();
+}
+
+void MainWindow::onClientConnected()
+{
+    ui->tabWidget->setCurrentIndex(1);
+    ui->messages->append("You connected to server \n");
 }

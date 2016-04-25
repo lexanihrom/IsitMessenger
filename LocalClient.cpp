@@ -1,6 +1,7 @@
 #include "LocalClient.hpp"
 
 #include <QTcpSocket>
+#include <QDebug>
 
 LocalClient::LocalClient(QObject *parent) :
     QObject(parent),
@@ -8,6 +9,8 @@ LocalClient::LocalClient(QObject *parent) :
 {
     connect(m_socket, SIGNAL(readyRead()),
             this, SLOT(onReadyRead()));
+
+    connect(m_socket, SIGNAL(connected()),this, SIGNAL(connected()));
 }
 
 void LocalClient::connectToServer(QString address, quint16 port)
