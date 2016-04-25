@@ -20,6 +20,11 @@ void LocalClient::sendMessage(QString message)
     m_socket->write(message.toUtf8());
 }
 
+void LocalClient::setNickname(QString nickname)
+{
+
+}
+
 void LocalClient::onReadyRead()
 {
     emit messageReceived("123", m_socket->readAll());

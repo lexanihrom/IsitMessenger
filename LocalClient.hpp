@@ -18,6 +18,7 @@ signals:
 public slots:
     void connectToServer(QString address, quint16 port);
     void sendMessage(QString message);
+    void setNickname(QString nickname);
 
 protected slots:
     void onReadyRead();
