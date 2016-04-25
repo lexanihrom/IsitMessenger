@@ -116,10 +116,10 @@ void MainWindow::on_sendButton_clicked()
     QString text = ui->message->text();
     ui->message->clear();
     if(text.startsWith("/nick ")){
-        m_client->setNickname(text.mid(7, -1));
+        m_client->setNickname(text.mid(6, -1));
     }
     else {
-         m_client->sendMessage(ui->message->text());
+         m_client->sendMessage(text);
     }
 }
 
