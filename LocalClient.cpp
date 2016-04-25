@@ -20,7 +20,7 @@ void LocalClient::connectToServer(QString address, quint16 port)
 
 void LocalClient::sendMessage(QString message)
 {
-    m_socket->write(message.toUtf8());
+    m_socket->write("m:" + message.toUtf8());
 }
 
 void LocalClient::setNickname(QString nickname)
