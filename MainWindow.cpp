@@ -88,6 +88,7 @@ void MainWindow::addServerToDiscovery(quint16 port)
 void MainWindow::createServer()
 {
     m_server->startServer(ui->serverPort->value());
+    ui->createServer->setDisabled(true);
 }
 
 void MainWindow::onServerMessageReceived(QString from, QString message)
