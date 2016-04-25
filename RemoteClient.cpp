@@ -22,7 +22,15 @@ void RemoteClient::setNickname(QString nickname)
 
 void RemoteClient::onReadyRead()
 {
-    emit messageReceived(m_socket->readAll());
+    QString message = m_socket->readAll();
+
+    if(message.startsWith("m:")){
+        emit messageReceived(message.mid(2));
+    } else if (message.startsWith("setNickName:")) {
+        QString nick = message.mid(12);
+        setNickname(nick);
+        sendMessage("nickNameStatus:1");
+    }
 }
 
 QString RemoteClient::nickName()

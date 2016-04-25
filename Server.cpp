@@ -15,7 +15,8 @@ void Server::startServer(quint16 port)
 {
     bool started = m_server->listen(QHostAddress::Any, port);
 
-    connect(m_server, SIGNAL(newConnection()), this, SLOT(onClientConnected()));
+    connect(m_server, SIGNAL(newConnection()),
+            this, SLOT(onClientConnected()));
 
     if (started) {
         emit serverStarted(m_server->serverPort());
@@ -51,8 +52,6 @@ void Server::onClientConnected()
         client->sendMessage("client connect" + clientSocket->peerAddress().toString());
     }
 
-    /*connect(client, SIGNAL(messageReceived(QString,QString)),
-            this, SIGNAL(messageReceived(QString,QString)));*/
     connect(client,SIGNAL(messageReceived(QString)),
             this,SLOT(onClientMessageReceived(QString)));
 }
