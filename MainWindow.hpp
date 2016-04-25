@@ -42,7 +42,7 @@ private slots:
 
     void on_serverListRefreshButton_clicked();
 
-    void on_sendButton_clicked();
+    void sendMessage();
 
     void onClientConnected();
 

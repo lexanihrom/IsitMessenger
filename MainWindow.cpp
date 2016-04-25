@@ -14,6 +14,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->createServer, SIGNAL(clicked(bool)),
             this, SLOT(createServer()));
 
+    connect(ui->message, SIGNAL(returnPressed()),
+            this, SLOT(sendMessage()));
+
+    connect(ui->sendButton, SIGNAL(clicked(bool)),
+            this, SLOT(sendMessage()));
+
     m_serverDiscovery = new ServerDiscovery(this);
     m_server = new Server(this);
 
@@ -111,7 +117,7 @@ void MainWindow::on_serverListRefreshButton_clicked()
     m_serverDiscovery->discoveryServer();
 }
 
-void MainWindow::on_sendButton_clicked()
+void MainWindow::sendMessage()
 {
     QString text = ui->message->text();
     ui->message->clear();
