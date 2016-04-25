@@ -47,6 +47,10 @@ void Server::onClientConnected()
 
     m_clients << client;
 
+    for (RemoteClient *client : m_clients) {
+        client->sendMessage("client connect" + clientSocket->peerAddress().toString());
+    }
+
     /*connect(client, SIGNAL(messageReceived(QString,QString)),
             this, SIGNAL(messageReceived(QString,QString)));*/
     connect(client,SIGNAL(messageReceived(QString)),
