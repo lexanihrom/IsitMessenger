@@ -25,6 +25,7 @@ protected slots:
 
 protected:
     QTcpSocket *m_socket;
+    QString m_pendingNickname;
 
 };
 
