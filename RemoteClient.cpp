@@ -26,7 +26,7 @@ void RemoteClient::onReadyRead()
 
     if(message.startsWith("m:")){
         emit messageReceived(message.mid(2));
-    } else if (message.startsWith("setNickName:")) {
+    } else if (message.startsWith("setNickname:")) {
         QString nick = message.mid(12);
         setNickname(nick);
         sendMessage("nickNameStatus:1");
