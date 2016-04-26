@@ -42,13 +42,10 @@ private slots:
 
     void on_serverListRefreshButton_clicked();
 
-<<<<<<< HEAD
-=======
     void sendMessage();
 
     void onClientConnected();
 
->>>>>>> ca8659bae62d93c7bf3f1d6ec30b788d937138a2
 private:
     Ui::MainWindow *ui;
     ServerDiscovery *m_serverDiscovery;

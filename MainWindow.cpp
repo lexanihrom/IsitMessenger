@@ -117,8 +117,6 @@ void MainWindow::on_serverListRefreshButton_clicked()
     ui->serverListList->clear();
     m_serverDiscovery->discoveryServer();
 }
-<<<<<<< HEAD
-=======
 
 void MainWindow::sendMessage()
 {
@@ -137,4 +135,3 @@ void MainWindow::onClientConnected()
     ui->tabWidget->setCurrentIndex(1);
     ui->messages->append("You connected to server \n");
 }
->>>>>>> ca8659bae62d93c7bf3f1d6ec30b788d937138a2
