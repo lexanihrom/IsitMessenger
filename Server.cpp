@@ -35,7 +35,7 @@ void Server::onClientMessageReceived(QString message)
 {
     RemoteClient *client = qobject_cast<RemoteClient*>(sender());
 
-    sendMessage(message);
+    sendMessage(client->nickName() + " : " + message);
 
     emit messageReceived(client->nickName(), message);
 }
@@ -47,6 +47,8 @@ void Server::onClientConnected()
     RemoteClient *client = new RemoteClient(clientSocket, this);
 
     m_clients << client;
+
+    client->setNickname(clientSocket->peerAddress().toString());
 
     for (RemoteClient *client : m_clients) {
         client->sendMessage("client connect" + clientSocket->peerAddress().toString());

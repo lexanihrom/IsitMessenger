@@ -34,7 +34,7 @@ void LocalClient::onReadyRead()
 {
     QByteArray data = m_socket->readAll();
     if (data.startsWith("m:")){
-        emit messageReceived("123", data.mid(2, -1));
+        emit messageReceived(data.mid(2, -1));
     }
     if(data.startsWith("NicknameStatus:0")){
 

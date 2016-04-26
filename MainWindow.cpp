@@ -32,8 +32,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(m_serverDiscovery,SIGNAL(serverFound(QString,quint16)),
             this, SLOT(addServer(QString,quint16)));
 
-    connect(m_client, SIGNAL(messageReceived(QString,QString)),
-            this, SLOT(addMessage(QString,QString)));
+    connect(m_client, SIGNAL(messageReceived(QString)),
+            this, SLOT(addMessage(QString)));
 
     connect(m_client, SIGNAL(connected()),
             this, SLOT(onClientConnected()));
@@ -63,9 +63,9 @@ void MainWindow::addContact(QString name)
     ui->contacts->addItem(name);
 }
 
-void MainWindow::addMessage(QString name, QString text)
+void MainWindow::addMessage(QString text)
 {
-    ui->messages->append(name+":"+text+"\n");
+    ui->messages->append(text);
 }
 
 void MainWindow::addServer(QString address, quint16 port)
