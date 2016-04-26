@@ -5,7 +5,7 @@
 #include <QVector>
 
 class QTcpServer;
-class QTcpSocket;
+class RemoteClient;
 
 class Server : public QObject
 {
@@ -19,17 +19,15 @@ signals:
 
 public slots:
     void startServer(quint16 port);
-
     void sendMessage(QString message);
 
 protected slots:
+    void onClientMessageReceived(QString message);
     void onClientConnected();
-    void onReadyRead();
-
 private:
     QTcpServer *m_server;
 
-    QVector<QTcpSocket*> m_clients;
+    QVector<RemoteClient*> m_clients;
 };
 
 #endif // SERVER_HPP

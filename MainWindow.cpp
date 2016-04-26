@@ -2,15 +2,23 @@
 #include "ui_MainWindow.h"
 #include "Server.hpp"
 #include "ServerDiscovery.hpp"
+#include "LocalClient.hpp"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    m_client(new LocalClient(this))
 {
     ui->setupUi(this);
 
     connect(ui->createServer, SIGNAL(clicked(bool)),
             this, SLOT(createServer()));
+
+    connect(ui->message, SIGNAL(returnPressed()),
+            this, SLOT(sendMessage()));
+
+    connect(ui->sendButton, SIGNAL(clicked(bool)),
+            this, SLOT(sendMessage()));
 
     m_serverDiscovery = new ServerDiscovery(this);
     m_server = new Server(this);
@@ -18,12 +26,17 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(m_server, SIGNAL(serverStarted(quint16)),
             this, SLOT(addServerToDiscovery(quint16)));
 
-
     connect(m_server, SIGNAL(messageReceived(QString,QString)),
-            this, SLOT(addMessage(QString,QString)));
+            this, SLOT(onServerMessageReceived(QString,QString)));
 
     connect(m_serverDiscovery,SIGNAL(serverFound(QString,quint16)),
             this, SLOT(addServer(QString,quint16)));
+
+    connect(m_client, SIGNAL(messageReceived(QString,QString)),
+            this, SLOT(addMessage(QString,QString)));
+
+    connect(m_client, SIGNAL(connected()),
+            this, SLOT(onClientConnected()));
 
     m_serverDiscovery->discoveryServer();
 }
@@ -35,7 +48,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::connectToServer()
 {
-
+    m_client->connectToServer(ui->serverListAddress->text(),
+                              ui->serverListPort->value());
 }
 
 void MainWindow::addContact(QString name)
@@ -74,8 +88,13 @@ void MainWindow::addServerToDiscovery(quint16 port)
 void MainWindow::createServer()
 {
     m_server->startServer(ui->serverPort->value());
+    ui->createServer->setDisabled(true);
 }
 
+void MainWindow::onServerMessageReceived(QString from, QString message)
+{
+    ui->serverLog->insertPlainText(from + ":" + message + "\n");
+}
 
 void MainWindow::on_serverListConnectButton_clicked()
 {
@@ -98,3 +117,24 @@ void MainWindow::on_serverListRefreshButton_clicked()
     ui->serverListList->clear();
     m_serverDiscovery->discoveryServer();
 }
+<<<<<<< HEAD
+=======
+
+void MainWindow::sendMessage()
+{
+    QString text = ui->message->text();
+    ui->message->clear();
+    if(text.startsWith("/nick ")){
+        m_client->setNickname(text.mid(6, -1));
+    }
+    else {
+         m_client->sendMessage(text);
+    }
+}
+
+void MainWindow::onClientConnected()
+{
+    ui->tabWidget->setCurrentIndex(1);
+    ui->messages->append("You connected to server \n");
+}
+>>>>>>> ca8659bae62d93c7bf3f1d6ec30b788d937138a2

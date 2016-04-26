@@ -5,6 +5,8 @@
 
 class ServerDiscovery;
 class Server;
+class LocalClient;
+
 class QListWidgetItem;
 
 namespace Ui {
@@ -30,6 +32,8 @@ public slots:
 private slots:
     void createServer();
 
+    void onServerMessageReceived(QString from, QString message);
+
     void on_serverListConnectButton_clicked();
 
     void on_serverListList_itemDoubleClicked(QListWidgetItem *item);
@@ -38,10 +42,18 @@ private slots:
 
     void on_serverListRefreshButton_clicked();
 
+<<<<<<< HEAD
+=======
+    void sendMessage();
+
+    void onClientConnected();
+
+>>>>>>> ca8659bae62d93c7bf3f1d6ec30b788d937138a2
 private:
     Ui::MainWindow *ui;
     ServerDiscovery *m_serverDiscovery;
     Server *m_server;
+    LocalClient *m_client;
 };
 
 #endif // MAINWINDOW_HPP
